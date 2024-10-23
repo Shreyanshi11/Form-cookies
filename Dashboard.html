@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Data </title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>User Data</h2>
+    <ul class="data-list" id="dataList"></ul>
+    <div>
+      <a href="##" id="logout">Logout</a>
+    </div>
+  </div>
+  <script>
+    
+    
+    if (!sessionStorage.getItem('loggedIn')) {
+      alert('You need to login first');
+      window.location.href = 'Login.html';
+    }
+    const userData = JSON.parse($.cookie('formData'));
+    userData.forEach(user => {
+      $('#dataList').append(`
+        <li>
+          <h3>${user.firstName} ${user.lastName}</h3>
+          <p>Username: ${user.userName}</p>
+          <p>City: ${user.city}</p>
+          <p>Phone: ${user.contactNumber}</p>
+        </li>
+      `);
+    });
+      // Logout functionality
+      $('#logout').click(function () {
+        $.removeCookie('formData');
+        sessionStorage.setItem("loggedIn", false);
+        window.location.href = 'Login.html';
+      });
+  </script>
+</body>
+</html>

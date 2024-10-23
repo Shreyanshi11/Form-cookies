@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Login page</title>
+  </head>
+  
+  <body>
+    <h2>Sign In</h2>
+    <form id="loginForm">
+      <div class="input-container">
+        <input
+          id="loginUserName"
+          type="text"
+          placeholder="User Name"
+          required
+        />
+      </div>
+      <div class="input-container">
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Password"
+          required
+        />
+      </div>
+      <div class="input-container">
+        <input type="submit" class="btn-submit" value="Login" />
+      </div>
+      <div class="bottom-links">
+        <p>New User? <a href="Register.html">Register Here</a></p>
+        <p><a href="ForgotPassword.html" id="forgot_password">Forgot Password?</a> </p>
+      </div>
+      <div id="error-message" style="color: red"></div>
+    </form>
+
+    <script>
+      $(document).ready(function () {
+        $("#loginForm").on("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          // Gather login data
+          const loginData = {
+            userName: $("#loginUserName").val(),
+            password: $("#loginPassword").val(),
+          };
+
+          // Retrieve the formData cookie (which stores registered users)
+          const users = getCookie("formData");
+          if (users) {
+            const parsedUsers = JSON.parse(users); // Parse the stored JSON
+
+            // Find the user with matching username and password
+            const matchedUser = parsedUsers.find(
+              (user) =>
+                user.userName === loginData.userName &&
+                user.password === loginData.password
+            );
+
+            if (matchedUser) {
+              sessionStorage.setItem("loggedIn", true);
+              //document.cookie = "session=true; path=/;"; // Set session cookie
+              alert("Logged in Successfully.");
+              // Redirect to the dashboard
+              window.location.href = "Dashboard.html";
+            } else {
+              alert("Invalid username or password.");
+            }
+          } else {
+            alert("No registered users found.");
+          }
+        });
+
+        // Function to retrieve a cookie value by name
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+      });
+    </script>
+  </body>
+</html>
