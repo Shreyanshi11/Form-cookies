@@ -1,6 +1,7 @@
 body {
   background-color: aliceblue;
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 a {
   text-decoration: none;
@@ -44,6 +45,9 @@ input[type="number"] {
   font-size: 18px;
   border: 0;
 }
+h2{
+  font-family: 'Times New Roman', Times, serif;
+}
 .dashboard-container h2 {
   text-align: center;
 }
@@ -56,14 +60,21 @@ ul.data-list {
   padding: 20px;
 }
 ul.data-list li {
-  border: 1px solid lightgrey;
-  /* padding: 10px; */
-  border-bottom: none;
+  border-bottom: 1px solid lightgrey;
+  padding: 15px 0;
   text-align: left;
+}
+ul.data-list li h3{
+  margin: 0 0 20px 0;
+  color: blueviolet;
+  font-family: monospace;
+}
+ul.data-list li p{
+  margin: 0 0 15px 0;
 }
 
 ul.data-list li:last-child {
-  border-bottom: 1px solid lightgrey;
+  border-bottom: none;
 }
 .bottom-links{
   display: flex;
