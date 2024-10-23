@@ -45,6 +45,10 @@ input[type="number"] {
   font-size: 18px;
   border: 0;
 }
+.dashboard-container{
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
 h2{
   font-family: 'Times New Roman', Times, serif;
 }
@@ -53,8 +57,7 @@ h2{
 }
 ul.data-list {
   list-style-type: none;
-  max-width: 500px;
-  margin: 0 auto 20px;
+ 
   box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
   background-color: #fff;
   padding: 20px;
@@ -71,6 +74,9 @@ ul.data-list li h3{
 }
 ul.data-list li p{
   margin: 0 0 15px 0;
+}
+ul.data-list li p:last-child{
+  margin: 0;
 }
 
 ul.data-list li:last-child {
