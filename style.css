@@ -61,14 +61,7 @@ ul.data-list li {
   border-bottom: none;
   text-align: left;
 }
-ul.data-list li strong {
-  text-transform: capitalize;
-  width: 130px;
-  display: inline-block;
-  border-right: 1px solid lightgrey;
-  padding: 10px;
-  margin-right: 10px;
-}
+
 ul.data-list li:last-child {
   border-bottom: 1px solid lightgrey;
 }
